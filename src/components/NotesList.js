@@ -20,7 +20,7 @@ const NotesList = ({
 					deleteNote={deleteNote}
 				/>
 				)):
-				<p>No notes are available.</p>
+				<p className='spl'>No notes are available.</p>
 			}
 			<AddNote addNote={addNote} />
 		</div>

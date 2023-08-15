@@ -11,7 +11,7 @@ const Header = ({darkMode, setDarkMode }) => {
 				}
 				className='save'
 			>
-				{darkMode ? `Dark` : `Light`}
+				{darkMode ? `Dark Mode` : `Light Mode`}
 			</button>
 		</div>
 	);
