@@ -28,6 +28,7 @@ code {
 
 .container {
 	max-width: 960px;
+	margin-bottom: 20px;
 	margin-right: auto;
 	margin-left: auto;
 	padding-right: 15px;
@@ -46,6 +47,17 @@ code {
 
 .note.new {
 	background-color: #67d7cc;
+}
+
+.new input{
+	border: none;
+	background-color: #67d7cc;
+	font-family: monospace;
+	margin-bottom: 20px;
+}
+
+input:focus{
+	outline: none;
 }
 
 textarea {
@@ -74,17 +86,33 @@ textarea:focus {
 	background-color: #fef68a;
 	border-radius: 10px;
 	padding: 1rem;
-	min-height: 170px;
+	min-height: 230px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: start;
 	white-space: pre-wrap;
+}
+
+.title{
+	font-weight: 700;
+}
+
+.over-flow{
+	max-height: 170px;
+	overflow-y: scroll;
+	&::-webkit-scrollbar{
+		display: none;
+	}
 }
 
 .note-footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.note-footer:last-of-type{
+	margin-top: auto;
 }
 
 .delete-icon {
@@ -96,11 +124,13 @@ textarea:focus {
 	align-items: center;
 	background-color: rgb(233, 233, 233);
 	border-radius: 10px;
-	padding: 5px;
+	padding: 10px;
 	margin-bottom: 1.5em;
 }
 
 .search input {
+	margin-left: 10px;
+	font-family: monospace;
 	border: none;
 	background-color: rgb(233, 233, 233);
 	width: 100%;

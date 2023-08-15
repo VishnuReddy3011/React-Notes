@@ -3,21 +3,26 @@ import AddNote from './AddNote';
 
 const NotesList = ({
 	notes,
-	handleAddNote,
-	handleDeleteNote,
+	addNote,
+	deleteNote,
 }) => {
 	return (
 		<div className='notes-list'>
-			{notes.map((note,index) => (
+			{notes.length ?
+				notes.map((note,index) => (
 				<Note
-                    key = {index}
+                    key={index}
 					id={note.id}
+					title={note.title}
 					text={note.text}
 					date={note.date}
-					handleDeleteNote={handleDeleteNote}
+					overflow={note.overflow}
+					deleteNote={deleteNote}
 				/>
-			))}
-			<AddNote handleAddNote={handleAddNote} />
+				)):
+				<p>No notes are available.</p>
+			}
+			<AddNote addNote={addNote} />
 		</div>
 	);
 };

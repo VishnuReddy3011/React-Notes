@@ -5,28 +5,7 @@ import Search from './components/Search';
 import Header from './components/Header';
 
 const App = () => {
-	const [notes, setNotes] = useState([
-		{
-			id: nanoid(),
-			text: 'This is my first note!',
-			date: '15/04/2021',
-		},
-		{
-			id: nanoid(),
-			text: 'This is my second note!',
-			date: '21/04/2021',
-		},
-		{
-			id: nanoid(),
-			text: 'This is my third note!',
-			date: '28/04/2021',
-		},
-		{
-			id: nanoid(),
-			text: 'This is my new note!',
-			date: '30/04/2021',
-		},
-	]);
+	const [notes, setNotes] = useState([]);
 
 	const [searchText, setSearchText] = useState('');
 
@@ -49,12 +28,14 @@ const App = () => {
 		);
 	}, [notes]);
 
-	const addNote = (text) => {
+	const addNote = (title,text,overflow) => {
 		const date = new Date();
 		const newNote = {
 			id: nanoid(),
+      title: title,
 			text: text,
 			date: date.toLocaleDateString(),
+      overflow: overflow
 		};
 		const newNotes = [...notes, newNote];
 		setNotes(newNotes);
@@ -68,14 +49,19 @@ const App = () => {
 	return (
 		<div className={`${darkMode && 'dark-mode'}`}>
 			<div className='container'>
-				<Header handleToggleDarkMode={setDarkMode} />
-				<Search handleSearchNote={setSearchText} />
+				<Header darkMode={darkMode} setDarkMode={setDarkMode} />
+				<Search setSearchText={setSearchText} />
 				<NotesList
 					notes={notes.filter((note) =>
-						note.text.toLowerCase().includes(searchText)
+						note.text.includes(searchText) ||
+						note.text.toLowerCase().includes(searchText) ||
+						note.text.toUpperCase().includes(searchText) ||
+            note.title.includes(searchText) ||
+						note.title.toLowerCase().includes(searchText) ||
+						note.title.toUpperCase().includes(searchText)
 					)}
-					handleAddNote={addNote}
-					handleDeleteNote={deleteNote}
+					addNote={addNote}
+					deleteNote={deleteNote}
 				/>
 			</div>
 		</div>

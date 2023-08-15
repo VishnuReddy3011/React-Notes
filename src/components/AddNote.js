@@ -1,30 +1,52 @@
 import { useState } from 'react';
 
-const AddNote = ({ handleAddNote }) => {
+const AddNote = ({ addNote }) => {
 	const [noteText, setNoteText] = useState('');
-	const characterLimit = 200;
+	const [noteTitle, setNoteTitle] = useState('');
+	const [overflow, setOverflow] = useState(false);
 
-	const handleChange = (event) => {
-		if (characterLimit - event.target.value.length >= 0) {
-			setNoteText(event.target.value);
+	const characterLimit = 1000;
+	const titleLimit = 100;
+
+	const handleChangeTitle = e => {
+		if(titleLimit - e.target.value.length >= 0){
+			setNoteTitle(e.target.value);
 		}
+	}
+
+	const handleChangeText = e => {
+		if (characterLimit - e.target.value.length >= 0) {
+			if(e.target.offsetHeight < e.target.scrollHeight){
+				setOverflow(true);
+			}
+			setNoteText(e.target.value);
+		}
+
 	};
 
 	const handleSaveClick = () => {
 		if (noteText.trim().length > 0) {
-			handleAddNote(noteText);
+			addNote(noteTitle, noteText, overflow);
+			setNoteTitle('');
 			setNoteText('');
+			setOverflow(false);
 		}
 	};
 
 	return (
 		<div className='note new'>
+			<input 
+				type="text" 
+				placeholder='Type to add a title...'
+				value={noteTitle}
+				onChange={handleChangeTitle}
+			/>
 			<textarea
 				rows='8'
 				cols='10'
 				placeholder='Type to add a note...'
 				value={noteText}
-				onChange={handleChange}
+				onChange={handleChangeText}
 			></textarea>
 			<div className='note-footer'>
 				<small>

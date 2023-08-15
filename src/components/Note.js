@@ -1,13 +1,17 @@
 import { MdDeleteForever } from 'react-icons/md';
 
-const Note = ({ id, text, date, handleDeleteNote }) => {
+const Note = ({ id,title, text, date, overflow, deleteNote }) => {
+	console.log(overflow);
 	return (
 		<div className='note'>
-			<span>{text}</span>
+			<span className='title'>{title}</span>
+			<div className={`${overflow && 'over-flow'}`}>
+				<p>{text}</p>
+			</div>
 			<div className='note-footer'>
 				<small>{date}</small>
 				<MdDeleteForever
-					onClick={() => handleDeleteNote(id)}
+					onClick={() => deleteNote(id)}
 					className='delete-icon'
 					size='1.3em'
 				/>

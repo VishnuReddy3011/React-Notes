@@ -1,18 +1,17 @@
 import React from 'react';
 
-const Header = ({ handleToggleDarkMode }) => {
+const Header = ({darkMode, setDarkMode }) => {
+
 	return (
 		<div className='header'>
 			<h1>Notes</h1>
 			<button
 				onClick={() =>
-					handleToggleDarkMode(
-						(previousDarkMode) => !previousDarkMode
-					)
+					setDarkMode((prev) => !prev)
 				}
 				className='save'
 			>
-				Toggle Mode
+				{darkMode ? `Dark` : `Light`}
 			</button>
 		</div>
 	);
