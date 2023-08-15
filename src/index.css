@@ -25,6 +25,9 @@ code {
 .dark-mode h1 {
 	color: white;
 }
+.dark-mode p {
+	color: white;
+}
 
 .container {
 	max-width: 960px;
