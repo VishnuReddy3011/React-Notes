@@ -89,7 +89,7 @@ textarea:focus {
 	min-height: 230px;
 	display: flex;
 	flex-direction: column;
-	justify-content: start;
+	justify-content: flex-start;
 	white-space: pre-wrap;
 }
 
