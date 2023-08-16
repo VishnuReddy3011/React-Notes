@@ -116,6 +116,7 @@ textarea:focus {
 	border-radius: 10px;
 	padding: 1rem;
 	min-height: 230px;
+	max-height: 230px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
