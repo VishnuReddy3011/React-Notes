@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const NoteEdit = ({ id,title,text,updatedNote,setUpdate }) => {
+const NoteEdit = ({ id,title,text, overflow,updatedNote,setUpdate }) => {
 	const [noteText, setNoteText] = useState(text);
 	const [noteTitle, setNoteTitle] = useState(title);
-  const [flow,setFlow] = useState(false);
+  const [flow,setFlow] = useState(overflow);
 
 	const characterLimit = 1000;
 	const titleLimit = 100;

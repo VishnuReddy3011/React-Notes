@@ -39,6 +39,7 @@ const Note = ({
           id={id}
           title={title}
           text={text}
+          overflow={overflow}
           updatedNote={updatedNote}
 		      setUpdate = {setUpdate}
         />
