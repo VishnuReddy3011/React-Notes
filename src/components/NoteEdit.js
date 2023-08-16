@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-const NoteEdit = ({ title,text,updateNote,setUpdate }) => {
+const NoteEdit = ({ title,text,overflow,updateNote,setUpdate }) => {
 	const [noteText, setNoteText] = useState(text);
 	const [noteTitle, setNoteTitle] = useState(title);
+  const [flow,setFlow] = useState(false);
 
 	const characterLimit = 1000;
 	const titleLimit = 100;
@@ -16,6 +17,9 @@ const NoteEdit = ({ title,text,updateNote,setUpdate }) => {
 
 	const handleChangeText = e => {
 		if (characterLimit - e.target.value.length >= 0) {
+      if(e.target.offsetHeight < e.target.scrollHeight){
+				setFlow(true);
+			}
 			setNoteText(e.target.value);
 		}
 	};
@@ -23,7 +27,7 @@ const NoteEdit = ({ title,text,updateNote,setUpdate }) => {
 	const handleEditSaveClick = () => {
 		if (noteText.trim().length > 0) {
       const dt = new Date();
-			updateNote(noteTitle,noteText,dt.toLocaleDateString());
+			updateNote(noteTitle,noteText,dt.toLocaleDateString(),flow);
 		}
     setUpdate(false);
     

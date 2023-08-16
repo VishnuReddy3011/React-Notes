@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { MdDeleteForever, MdEditNote } from 'react-icons/md';
 import NoteEdit from './NoteEdit';
 
-const Note = ({ id, title: initialTitle, text: initialText, date: initialDate, overflow, deleteNote }) => {
+const Note = ({ id, title: initialTitle, text: initialText, date: initialDate, overflow: initialOverflow, deleteNote }) => {
   const [update, setUpdate] = useState(false);
   const [title, setTitle] = useState(initialTitle);
   const [text, setText] = useState(initialText);
   const [date,setDate] = useState(initialDate);
+  const [overflow,setOverflow] = useState(initialOverflow);
 
   const [isHoveredEdit, setIsHoveredEdit] = useState(false);
   const [isHoveredDelete, setIsHoveredDelete] = useState(false);
@@ -27,10 +28,11 @@ const Note = ({ id, title: initialTitle, text: initialText, date: initialDate, o
     setIsHoveredDelete(false);
   };
 
-  const updateNote = (titleVal, textVal, dateVal) => {
+  const updateNote = (titleVal, textVal, dateVal,flowVal) => {
+    setOverflow(flowVal);
     setTitle(titleVal);
     setText(textVal);
-	setDate(dateVal);
+	  setDate(dateVal);
     // setUpdate(false); // Exit edit mode after updating
   };
 
@@ -40,8 +42,9 @@ const Note = ({ id, title: initialTitle, text: initialText, date: initialDate, o
         <NoteEdit
           title={title}
           text={text}
+          overflow={overflow}
           updateNote={updateNote}
-		  setUpdate = {setUpdate}
+		      setUpdate = {setUpdate}
         />
       ) : (
         <div className='note edit'>
@@ -51,26 +54,26 @@ const Note = ({ id, title: initialTitle, text: initialText, date: initialDate, o
           </div>
           <div className='note-footer'>
             <small>{date}</small>
-			<div className='edit-container'>
-				<MdEditNote
-				onClick={() => setUpdate(true)}
-				onMouseEnter={handleMouseEnterEdit}
-				onMouseLeave={handleMouseLeaveEdit}
-				className='edit-icon'
-				size='1.3em'
-				/>
-				<span className={`edit-text ${isHoveredEdit ? 'visible' : ''}`}>edit</span>
-			</div>
-			<div className='delete-container'>
-				<MdDeleteForever
-				onClick={() => deleteNote(id)}
-				onMouseEnter={handleMouseEnterDelete}
-				onMouseLeave={handleMouseLeaveDelete}
-				className='delete-icon'
-				size='1.3em'
-				/>
-				<span className={`delete-text ${isHoveredDelete ? 'visible' : ''}`}>delete</span>
-			</div>
+            <div className='edit-container'>
+              <MdEditNote
+                onClick={() => {setUpdate(true); handleMouseLeaveEdit()}}
+                onMouseEnter={handleMouseEnterEdit}
+                onMouseLeave={handleMouseLeaveEdit}
+                className='edit-icon'
+                size='1.3em'
+              />
+              <span className={`edit-text ${isHoveredEdit ? 'visible' : ''}`}>edit</span>
+            </div>
+            <div className='delete-container'>
+              <MdDeleteForever
+                onClick={() => deleteNote(id)}
+                onMouseEnter={handleMouseEnterDelete}
+                onMouseLeave={handleMouseLeaveDelete}
+                className='delete-icon'
+                size='1.3em'
+              />
+              <span className={`delete-text ${isHoveredDelete ? 'visible' : ''}`}>delete</span>
+            </div>
           </div>
         </div>
       )}
