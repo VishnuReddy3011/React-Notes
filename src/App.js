@@ -41,6 +41,21 @@ const App = () => {
 		setNotes(newNotes);
 	};
 
+	const updatedNote = (id,title,text,overflow) =>{
+		const date = new Date();
+		const idx = notes.findIndex(obj => obj.id === id);
+		const editedNote = {
+			id : id,
+			title: title,
+			text: text,
+			date: date.toLocaleDateString(),
+			overflow: overflow
+		}
+		const newNotes = [...notes];
+		newNotes[idx] = editedNote;
+		setNotes(newNotes);
+	}
+
 	const deleteNote = (id) => {
 		const newNotes = notes.filter((note) => note.id !== id);
 		setNotes(newNotes);
@@ -62,6 +77,7 @@ const App = () => {
 					)}
 					addNote={addNote}
 					deleteNote={deleteNote}
+					updatedNote={updatedNote}
 				/>
 			</div>
 		</div>

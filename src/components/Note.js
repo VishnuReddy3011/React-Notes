@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { MdDeleteForever, MdEditNote } from 'react-icons/md';
 import NoteEdit from './NoteEdit';
 
-const Note = ({ id, title: initialTitle, text: initialText, date: initialDate, overflow: initialOverflow, deleteNote }) => {
+const Note = ({ 
+    id, 
+    title, 
+    text, 
+    date, 
+    overflow, 
+    deleteNote,
+    updatedNote
+}) => {
   const [update, setUpdate] = useState(false);
-  const [title, setTitle] = useState(initialTitle);
-  const [text, setText] = useState(initialText);
-  const [date,setDate] = useState(initialDate);
-  const [overflow,setOverflow] = useState(initialOverflow);
 
   const [isHoveredEdit, setIsHoveredEdit] = useState(false);
   const [isHoveredDelete, setIsHoveredDelete] = useState(false);
@@ -28,22 +32,14 @@ const Note = ({ id, title: initialTitle, text: initialText, date: initialDate, o
     setIsHoveredDelete(false);
   };
 
-  const updateNote = (titleVal, textVal, dateVal,flowVal) => {
-    setOverflow(flowVal);
-    setTitle(titleVal);
-    setText(textVal);
-	  setDate(dateVal);
-    // setUpdate(false); // Exit edit mode after updating
-  };
-
   return (
     <div>
       {update ? (
         <NoteEdit
+          id={id}
           title={title}
           text={text}
-          overflow={overflow}
-          updateNote={updateNote}
+          updatedNote={updatedNote}
 		      setUpdate = {setUpdate}
         />
       ) : (

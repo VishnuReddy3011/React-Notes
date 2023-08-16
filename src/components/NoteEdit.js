@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const NoteEdit = ({ title,text,overflow,updateNote,setUpdate }) => {
+const NoteEdit = ({ id,title,text,updatedNote,setUpdate }) => {
 	const [noteText, setNoteText] = useState(text);
 	const [noteTitle, setNoteTitle] = useState(title);
   const [flow,setFlow] = useState(false);
@@ -26,11 +26,9 @@ const NoteEdit = ({ title,text,overflow,updateNote,setUpdate }) => {
 
 	const handleEditSaveClick = () => {
 		if (noteText.trim().length > 0) {
-      const dt = new Date();
-			updateNote(noteTitle,noteText,dt.toLocaleDateString(),flow);
+			updatedNote(id,noteTitle,noteText,flow);
 		}
     setUpdate(false);
-    
 	};
 
 	return (

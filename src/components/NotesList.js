@@ -5,6 +5,7 @@ const NotesList = ({
 	notes,
 	addNote,
 	deleteNote,
+	updatedNote
 }) => {
 	return (
 		<div className='notes-list'>
@@ -18,6 +19,7 @@ const NotesList = ({
 					date={note.date}
 					overflow={note.overflow}
 					deleteNote={deleteNote}
+					updatedNote={updatedNote}
 				/>
 				)):
 				<p className='spl'>No notes are available.</p>
