@@ -5,11 +5,10 @@ const NoteEdit = ({ id,title,text, overflow,updatedNote,setUpdate }) => {
 	const [noteTitle, setNoteTitle] = useState(title);
   const [flow,setFlow] = useState(overflow);
 
-	const characterLimit = 1000;
+	const characterLimit = 3000;
 	const titleLimit = 100;
 
 	const handleChangeTitle = e => {
-    setNoteTitle(title);
 		if(titleLimit - e.target.value.length >= 0){
 			setNoteTitle(e.target.value);
 		}
@@ -32,7 +31,7 @@ const NoteEdit = ({ id,title,text, overflow,updatedNote,setUpdate }) => {
 	};
 
 	return (
-    <div className='note new'>
+    <div className='note editz'>
         <input 
           type="text" 
           value={noteTitle}

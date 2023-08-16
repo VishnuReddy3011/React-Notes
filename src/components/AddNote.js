@@ -5,7 +5,7 @@ const AddNote = ({ addNote }) => {
 	const [noteTitle, setNoteTitle] = useState('');
 	const [overflow, setOverflow] = useState(false);
 
-	const characterLimit = 1000;
+	const characterLimit = 3000;
 	const titleLimit = 100;
 
 	const handleChangeTitle = e => {

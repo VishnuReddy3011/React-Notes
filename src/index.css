@@ -51,6 +51,18 @@ code {
 .note.new {
 	background-color: #67d7cc;
 }
+.note.editz {
+	background-color: #93d254;
+}
+
+.editz input{
+	border: none;
+	border-bottom: 1px solid #36605c;
+	background-color: #93d254;
+	font-family: monospace;
+	padding: 0px 0px 5px 0px;
+	margin-bottom: 10px;
+}
 
 .new input{
 	border: none;
@@ -69,7 +81,19 @@ textarea {
 	border: none;
 	resize: none;
 	background-color: #67d7cc;
+	&::-webkit-scrollbar{
+		display: none;
+	}
 }
+.editz textarea {
+	border: none;
+	resize: none;
+	background-color: #93d254;
+	&::-webkit-scrollbar{
+		display: none;
+	}
+}
+
 
 textarea:focus {
 	outline: none;
@@ -166,6 +190,7 @@ textarea:focus {
 .delete-text.visible {
 	opacity: 1;
 }
+
 .search {
 	display: flex;
 	align-items: center;
