@@ -24,7 +24,7 @@ const NoteEdit = ({ id,title,text, overflow,updatedNote,setUpdate }) => {
 	};
 
 	const handleEditSaveClick = () => {
-		if (noteText.trim().length > 0) {
+		if (noteText.trim().length > 0 || noteTitle.trim().length > 0) {
 			updatedNote(id,noteTitle,noteText,flow);
 		}
     setUpdate(false);
@@ -35,12 +35,14 @@ const NoteEdit = ({ id,title,text, overflow,updatedNote,setUpdate }) => {
         <input 
           type="text" 
           value={noteTitle}
+          placeholder='Type to add a title...'
           onChange={handleChangeTitle}
         />
         <textarea
           rows='10'
           cols='10'
           value={noteText}
+          placeholder='Type to add a note...'
           onChange={handleChangeText}
         ></textarea>
         <div className='note-footer'>

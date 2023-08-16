@@ -25,7 +25,7 @@ const AddNote = ({ addNote }) => {
 	};
 
 	const handleSaveClick = () => {
-		if (noteText.trim().length > 0) {
+		if (noteText.trim().length > 0 || noteTitle.trim().length > 0) {
 			addNote(noteTitle, noteText, overflow);
 			setNoteTitle('');
 			setNoteText('');
