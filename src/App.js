@@ -32,10 +32,10 @@ const App = () => {
 		const date = new Date();
 		const newNote = {
 			id: nanoid(),
-      title: title,
+      		title: title,
 			text: text,
 			date: date.toLocaleDateString(),
-      overflow: overflow
+      		overflow: overflow
 		};
 		const newNotes = [...notes, newNote];
 		setNotes(newNotes);
@@ -56,7 +56,7 @@ const App = () => {
 						note.text.includes(searchText) ||
 						note.text.toLowerCase().includes(searchText) ||
 						note.text.toUpperCase().includes(searchText) ||
-            note.title.includes(searchText) ||
+            			note.title.includes(searchText) ||
 						note.title.toLowerCase().includes(searchText) ||
 						note.title.toUpperCase().includes(searchText)
 					)}

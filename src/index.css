@@ -54,9 +54,11 @@ code {
 
 .new input{
 	border: none;
+	border-bottom: 1px solid #36605c;
 	background-color: #67d7cc;
 	font-family: monospace;
-	margin-bottom: 20px;
+	padding: 0px 0px 5px 0px;
+	margin-bottom: 10px;
 }
 
 input:focus{
@@ -96,6 +98,10 @@ textarea:focus {
 	white-space: pre-wrap;
 }
 
+.note .text{
+	font-size: 15px;
+}
+
 .title{
 	font-weight: 700;
 }
@@ -118,10 +124,48 @@ textarea:focus {
 	margin-top: auto;
 }
 
-.delete-icon {
-	cursor: pointer;
+.edit .note-footer{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
 }
 
+.edit .note-footer small:first-of-type{
+	margin-right: auto;
+}
+
+
+.edit-icon, .delete-icon {
+	cursor: pointer;
+	display: block;
+}
+
+.edit-container, .delete-container {
+  position: relative;
+  display: inline-block;
+}
+
+
+.edit-text, .delete-text {
+  position: absolute;
+  bottom: -15px; /* Adjust this value to control the space between icon and text */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0; /* Initially hidden */
+  transition: opacity 2s ease;
+  font-family: monospace;
+  background-color: #585858;
+  border-radius: 5px;
+  color: white;
+}
+
+.edit-text.visible {
+  opacity: 1;
+}
+.delete-text.visible {
+	opacity: 1;
+}
 .search {
 	display: flex;
 	align-items: center;
